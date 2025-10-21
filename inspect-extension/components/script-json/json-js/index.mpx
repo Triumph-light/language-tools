@@ -78,18 +78,6 @@ if (!__ISRN__) {
     )
 }
 
-const aliConfig = {
-  component: true,
-  usingComponents: comps,
-}
-
-aliConfig.usingComponents = {
-  list: '../components/list1.mpx',
-  'list-error-path': '../components/list-error.mpx',
-  'plugin-comp': 'plugin://my-plugin/my-component', // Fix #70
-}
-
-aliConfig.usingComponents.list = '../components/list1.mpx'
 result.usingComponents['list-error-path'] = '../components/list-error.mpx'
 
 let finalConfig = null
@@ -97,6 +85,38 @@ if (__mpx_mode__ === 'ali') {
   finalConfig = aliConfig
 } else {
   finalConfig = wxConfig
+}
+
+const aliConfig = {
+  component: true,
+  usingComponents: {
+    list: '../components/list1.mpx',
+    'list-error-path': '../components/list-error.mpx',
+    'plugin-comp': 'plugin://my-plugin/my-component', // Fix #70
+  },
+}
+
+aliConfig.usingComponents.test = "../components/list1.mpx",
+const config = {
+  "navigationBarTitleText": "滴滴顺风车",
+  "navigationStyle": "custom",
+  "backgroundColor": "#ffffff",
+  usingComponents: {
+    "leaderPage": "../components/list1.mpx",
+    "errorPage": "../../../components/error-page/index.mpx?async=error_page",
+    "popup": "../../../components/popup/index.mpx?async=popup_block",
+  }
+}
+
+config.usingComponents.Loading = "../components/list1.mpx",
+config.usingComponents.followerPage = "../components/list1.mpx"
+
+const usingComponents = {
+  "list": "../components/list1.mpx",
+  "list-error-path": "../components/list-error.mpx",
+}
+const testConfig2 = {
+  usingComponents,
 }
 
 module.exports = finalConfig
